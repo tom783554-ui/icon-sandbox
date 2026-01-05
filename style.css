@@ -1,1 +1,29 @@
-body{font-family:sans-serif;}
+body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; background: #f6f7f9; }
+a { color: inherit; }
+.app { max-width: 900px; margin: 0 auto; padding: 16px; }
+.topbar { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom: 12px; }
+.title { font-weight: 800; font-size: 18px; }
+.controls { display:flex; gap:12px; align-items:center; flex-wrap: wrap; }
+.controls label { font-size: 13px; color: #111827; display:flex; gap:8px; align-items:center; }
+.controls .chk { user-select:none; }
+
+.panel { background: white; border: 1px solid #e5e7eb; border-radius: 10px; overflow:hidden; }
+.panelHeader { display:grid; grid-template-columns: 1fr 140px; gap:12px; padding: 12px 12px; border-bottom: 1px solid #e5e7eb; background: #fafafa; font-size: 12px; color: #6b7280; }
+.panelHeader .right { text-align:right; }
+
+.row { display:grid; grid-template-columns: 1fr 140px; gap:12px; padding: 10px 12px; align-items:center; border-bottom: 1px solid #f0f2f5; }
+.row:last-child { border-bottom: none; }
+
+.left { display:flex; align-items:center; gap:10px; min-width:0; }
+.visual { width: 24px; height: 24px; display:flex; align-items:center; justify-content:center; color: #111827; }
+.visual img { width: 24px; height: 24px; border-radius: 6px; border: 1px solid #e5e7eb; }
+
+.labelBlock { min-width:0; }
+.primary { font-weight: 700; font-size: 14px; color: #111827; white-space: nowrap; overflow:hidden; text-overflow: ellipsis; display:flex; align-items:center; gap:8px; }
+.meta { font-size: 11px; color: #6b7280; white-space: nowrap; overflow:hidden; text-overflow: ellipsis; margin-top:2px; }
+
+.location { text-align:right; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 12px; color: #111827; white-space:nowrap; overflow:hidden; text-overflow: ellipsis; }
+
+.chip { display:inline-flex; align-items:center; padding: 2px 6px; border-radius: 999px; font-size: 11px; border: 1px solid #111827; }
+
+.note { margin-top: 12px; font-size: 12px; color: #374151; }
