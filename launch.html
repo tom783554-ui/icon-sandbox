@@ -1,15 +1,50 @@
 <!doctype html>
 <html>
-<head><meta charset="utf-8"><title>SMART Launch</title></head>
-<body>
-Launching…
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SupEHR Launch</title>
+  <script src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"></script>
+</head>
+<body style="font-family: system-ui; padding: 16px;">
+  <div>Launching SupEHR…</div>
+  <pre id="dbg"></pre>
+
 <script>
-const p = new URLSearchParams(location.search);
-const iss = p.get("iss");
-const launch = p.get("launch");
-if (iss) localStorage.setItem("iss", iss);
-if (launch) localStorage.setItem("launch", launch);
-location.href = "/icon-sandbox/";
+  const dbg = (msg) => { document.getElementById("dbg").textContent += msg + "\n"; };
+
+  const params = new URLSearchParams(location.search);
+  const iss = params.get("iss");
+  const launch = params.get("launch");
+
+  const CLIENT_ID = "922657b3-1886-4eb0-927b-ca645e21d336";
+  const REDIRECT_URI = "https://tom783554-ui.github.io/icon-sandbox/callback.html";
+
+  dbg("iss=" + (iss || "MISSING"));
+  dbg("launch=" + (launch || "none"));
+
+  if (!iss) {
+    dbg("ERROR: missing iss. You must launch from Epic SMART launcher.");
+    throw new Error("Missing iss");
+  }
+
+  const SCOPE = [
+    "launch",
+    "openid",
+    "fhirUser",
+    "profile",
+    "offline_access",
+    "patient/*.read",
+    "user/*.read"
+  ].join(" ");
+
+  FHIR.oauth2.authorize({
+    clientId: CLIENT_ID,
+    scope: SCOPE,
+    redirectUri: REDIRECT_URI,
+    iss,
+    ...(launch ? { launch } : {})
+  });
 </script>
 </body>
 </html>
