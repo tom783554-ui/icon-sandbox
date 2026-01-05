@@ -1,18 +1,23 @@
 <!doctype html>
 <html>
-<head><meta charset="utf-8"><title>SMART Callback</title></head>
-<body>
-Callback…
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SupEHR Callback</title>
+  <script src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"></script>
+</head>
+<body style="font-family: system-ui; padding: 16px;">
+  <div>Completing sign-in…</div>
+  <pre id="err"></pre>
+
 <script>
-const p = new URLSearchParams(location.search);
-
-// store whatever comes back (we’ll use code/state later)
-for (const [k,v] of p.entries()) {
-  localStorage.setItem("cb_" + k, v);
-}
-
-// go to UI
-location.href = "/icon-sandbox/";
+  FHIR.oauth2.ready()
+    .then(() => location.replace("index.html"))
+    .catch((e) => {
+      document.getElementById("err").textContent =
+        (e?.stack || e?.message || String(e));
+    });
 </script>
 </body>
 </html>
+
