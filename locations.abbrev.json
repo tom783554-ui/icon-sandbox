@@ -1,0 +1,12 @@
+{
+  "rules": {
+    "max_display_chars": 10,
+    "fallback": "\u2014"
+  },
+  "examples": [
+    "R AC",
+    "L IJ",
+    "RUQ",
+    "Bladder"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "states": [
+    {
+      "id": "running",
+      "label": "Running"
+    },
+    {
+      "id": "paused",
+      "label": "Paused"
+    },
+    {
+      "id": "in_place",
+      "label": "In place"
+    },
+    {
+      "id": "removed",
+      "label": "Removed"
+    },
+    {
+      "id": "pending",
+      "label": "Pending"
+    },
+    {
+      "id": "active",
+      "label": "Active"
+    },
+    {
+      "id": "inactive",
+      "label": "Inactive"
+    },
+    {
+      "id": "open",
+      "label": "Open"
+    }
+  ]
+}

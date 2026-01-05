@@ -1,0 +1,243 @@
+{
+  "version": "0.1.0",
+  "generated_at": "2026-01-05T11:30:36.660055Z",
+  "icons": [
+    {
+      "id": "line_piv",
+      "label": "PIV",
+      "category": "line",
+      "keywords": [
+        "peripheral iv",
+        "iv"
+      ],
+      "default_glyph": "piv",
+      "states_supported": [
+        "running",
+        "paused",
+        "removed",
+        "pending"
+      ],
+      "ui_priority": 5
+    },
+    {
+      "id": "line_picc",
+      "label": "PICC",
+      "category": "line",
+      "keywords": [
+        "peripherally inserted central catheter",
+        "central line"
+      ],
+      "default_glyph": "picc",
+      "states_supported": [
+        "running",
+        "paused",
+        "removed",
+        "pending"
+      ],
+      "ui_priority": 5
+    },
+    {
+      "id": "line_cvc",
+      "label": "CVC",
+      "category": "line",
+      "keywords": [
+        "central venous catheter"
+      ],
+      "default_glyph": "cvc",
+      "states_supported": [
+        "running",
+        "paused",
+        "removed",
+        "pending"
+      ],
+      "ui_priority": 5
+    },
+    {
+      "id": "resp_nc",
+      "label": "NC",
+      "category": "resp",
+      "keywords": [
+        "nasal cannula",
+        "oxygen"
+      ],
+      "default_glyph": "nc",
+      "states_supported": [
+        "running",
+        "paused",
+        "removed",
+        "pending"
+      ],
+      "ui_priority": 4
+    },
+    {
+      "id": "resp_hfnc",
+      "label": "HFNC",
+      "category": "resp",
+      "keywords": [
+        "high flow nasal cannula"
+      ],
+      "default_glyph": "hfnc",
+      "states_supported": [
+        "running",
+        "paused",
+        "removed",
+        "pending"
+      ],
+      "ui_priority": 5
+    },
+    {
+      "id": "gu_foley",
+      "label": "Foley",
+      "category": "gu",
+      "keywords": [
+        "urinary catheter"
+      ],
+      "default_glyph": "foley",
+      "states_supported": [
+        "in_place",
+        "removed",
+        "pending"
+      ],
+      "ui_priority": 5
+    },
+    {
+      "id": "drain_jp",
+      "label": "JP drain",
+      "category": "drain",
+      "keywords": [
+        "jackson-pratt"
+      ],
+      "default_glyph": "jp",
+      "states_supported": [
+        "in_place",
+        "removed",
+        "pending"
+      ],
+      "ui_priority": 4
+    },
+    {
+      "id": "drain_chest_tube",
+      "label": "Chest tube",
+      "category": "drain",
+      "keywords": [
+        "thoracostomy"
+      ],
+      "default_glyph": "chest_tube",
+      "states_supported": [
+        "in_place",
+        "removed",
+        "pending"
+      ],
+      "ui_priority": 5
+    },
+    {
+      "id": "gi_peg",
+      "label": "PEG",
+      "category": "gi",
+      "keywords": [
+        "gastrostomy"
+      ],
+      "default_glyph": "peg",
+      "states_supported": [
+        "running",
+        "paused",
+        "removed",
+        "pending"
+      ],
+      "ui_priority": 4
+    },
+    {
+      "id": "safety_isolation",
+      "label": "Isolation",
+      "category": "safety",
+      "keywords": [
+        "contact",
+        "droplet",
+        "airborne"
+      ],
+      "default_glyph": "isolation",
+      "states_supported": [
+        "active",
+        "inactive"
+      ],
+      "ui_priority": 4
+    },
+    {
+      "id": "monitor_telemetry",
+      "label": "Tele",
+      "category": "monitor",
+      "keywords": [
+        "telemetry"
+      ],
+      "default_glyph": "tele",
+      "states_supported": [
+        "active",
+        "inactive"
+      ],
+      "ui_priority": 3
+    },
+    {
+      "id": "room_whiteboard",
+      "label": "Whiteboard",
+      "category": "room",
+      "keywords": [
+        "plan"
+      ],
+      "default_glyph": "whiteboard",
+      "states_supported": [
+        "open"
+      ],
+      "ui_priority": 3
+    }
+  ],
+  "glyphs": {
+    "piv": {
+      "viewBox": "0 0 24 24",
+      "path": "M6 18h12M9 18V7a3 3 0 0 1 6 0v11"
+    },
+    "picc": {
+      "viewBox": "0 0 24 24",
+      "path": "M8 6h8M12 6v14M7 10h10M7 14h10"
+    },
+    "cvc": {
+      "viewBox": "0 0 24 24",
+      "path": "M12 3v9M8 6l4 6 4-6M6 21h12"
+    },
+    "nc": {
+      "viewBox": "0 0 24 24",
+      "path": "M7 5v6a5 5 0 0 0 10 0V5M9 16v3M15 16v3"
+    },
+    "hfnc": {
+      "viewBox": "0 0 24 24",
+      "path": "M7 5v6a5 5 0 0 0 10 0V5M4 12h3M17 12h3M9 16v4M15 16v4"
+    },
+    "foley": {
+      "viewBox": "0 0 24 24",
+      "path": "M12 3v10a4 4 0 0 1-4 4H6v4h12v-4h-2a4 4 0 0 1-4-4V3"
+    },
+    "jp": {
+      "viewBox": "0 0 24 24",
+      "path": "M9 3h6v6H9zM12 9v10M8 19h8"
+    },
+    "chest_tube": {
+      "viewBox": "0 0 24 24",
+      "path": "M6 6h12v12H6zM6 12h6M12 12c2.5 0 4 2 6 2"
+    },
+    "peg": {
+      "viewBox": "0 0 24 24",
+      "path": "M8 7h8M12 7v14M6 12h4M14 12h4"
+    },
+    "isolation": {
+      "viewBox": "0 0 24 24",
+      "path": "M12 2l9 5v10l-9 5-9-5V7zM9 9h6M9 13h6M9 17h6"
+    },
+    "tele": {
+      "viewBox": "0 0 24 24",
+      "path": "M4 7h16v10H4zM6 12h3l2-4 3 8 2-4h2"
+    },
+    "whiteboard": {
+      "viewBox": "0 0 24 24",
+      "path": "M4 5h16v12H4zM8 21h8M9 9h6M9 12h6M9 15h4"
+    }
+  }
+}
