@@ -1,1 +1,44 @@
-<!doctype html><title>Sandbox</title><div>Sandbox loaded</div>
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Icon Sandbox</title>
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+  <div class="app">
+    <div class="topbar">
+      <div class="title">Icon Sandbox</div>
+      <div class="controls">
+        <label>Vendor
+          <select id="vendor">
+            <option value="epic">Epic</option>
+            <option value="cerner">Cerner</option>
+          </select>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" id="useImages"/>
+          Use images (simulated)
+        </label>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panelHeader">
+        <div>Device / Therapy</div>
+        <div class="right">Location</div>
+      </div>
+      <div id="list"></div>
+    </div>
+
+    <div class="note">
+      Test launch page:
+      <a href="./launch.html?iss=test&launch=test">launch.html test</a>
+    </div>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
