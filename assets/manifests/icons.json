@@ -1,0 +1,11 @@
+{
+  "line_picc": "assets/icons/line_picc.svg",
+  "gu_foley": "assets/icons/gu_foley.svg",
+  "resp_hfnc": "assets/icons/resp_hfnc.svg",
+  "drain_jp": "assets/icons/drain_jp.svg",
+  "drain_chest_tube": "assets/icons/drain_chest_tube.svg",
+  "gi_peg": "assets/icons/gi_peg.svg",
+  "safety_isolation": "assets/icons/safety_isolation.svg",
+  "monitor_telemetry": "assets/icons/monitor_telemetry.svg",
+  "room_whiteboard": "assets/icons/room_whiteboard.svg"
+}
