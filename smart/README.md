@@ -1,1 +1,0 @@
-SMART files go here
