@@ -1,0 +1,12 @@
+{
+  "name": "epic",
+  "icon": {
+    "sizes": [
+      16,
+      24,
+      32
+    ],
+    "stroke": 2.2,
+    "radius": 3
+  }
+}

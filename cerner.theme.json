@@ -1,0 +1,12 @@
+{
+  "name": "cerner",
+  "icon": {
+    "sizes": [
+      16,
+      24,
+      32
+    ],
+    "stroke": 2.0,
+    "radius": 5
+  }
+}
