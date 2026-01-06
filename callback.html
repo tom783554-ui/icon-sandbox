@@ -4,31 +4,72 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SupEHR Callback</title>
+
   <script src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"></script>
+
   <style>
     body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; padding: 16px; }
-    pre { white-space: pre-wrap; word-break: break-word; background:#fff5f5; border:1px solid #fecaca; padding:12px; border-radius:10px; color:#7f1d1d; }
+    pre { white-space: pre-wrap; word-break: break-word; background:#f6f8fa; padding:12px; border-radius:10px; }
+    a { display:inline-block; margin-top:12px; }
   </style>
 </head>
 <body>
-  <h3>Completing sign-in…</h3>
-  <pre id="err" style="display:none"></pre>
+  <h3>SupEHR Callback</h3>
+  <pre id="dbg"></pre>
+  <a id="go" href="./index.html" style="display:none;">Continue to SupEHR</a>
 
 <script>
-  const errEl = document.getElementById("err");
-  function showErr(e) {
-    errEl.style.display = "block";
-    errEl.textContent = (e?.stack || e?.message || String(e));
+  const dbgEl = document.getElementById("dbg");
+  const goEl = document.getElementById("go");
+  const dbg = (msg) => dbgEl.textContent += msg + "\n";
+
+  // Show raw callback params (safe + useful)
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get("code");
+  const state = params.get("state");
+  const error = params.get("error");
+  const error_description = params.get("error_description");
+
+  dbg("code = " + (code ? "PRESENT" : "MISSING"));
+  dbg("state = " + (state ? "PRESENT" : "MISSING"));
+
+  if (error) {
+    dbg("ERROR from auth server:");
+    dbg("error = " + error);
+    dbg("error_description = " + (error_description || ""));
   }
 
-  // If you open callback.html directly you WILL get "No state parameter found".
-  // It must be reached only via Epic OAuth redirect.
+  // Complete SMART handshake and store client + tokens
   FHIR.oauth2.ready()
-    .then(() => {
-      // IMPORTANT: go to index.html WITHOUT typing anything manually
-      location.replace("index.html");
+    .then((client) => {
+      dbg("SMART ready ✅");
+      dbg("FHIR server: " + client.state.serverUrl);
+
+      // Patient context (if patient launch)
+      dbg("patient = " + (client.patient && client.patient.id ? client.patient.id : "none"));
+
+      // Optional: prove token works by reading Patient (if present)
+      if (client.patient && client.patient.id) {
+        return client.request(`Patient/${client.patient.id}`)
+          .then((pt) => {
+            dbg("Patient read ✅");
+            dbg("Patient name: " + (pt.name?.[0]?.text || [pt.name?.[0]?.given?.[0], pt.name?.[0]?.family].filter(Boolean).join(" ") || "unknown"));
+            return client;
+          });
+      }
+      return client;
     })
-    .catch(showErr);
+    .then(() => {
+      // If we got here, auth is complete. Go to main app.
+      goEl.style.display = "inline-block";
+      dbg("You can continue to the app.");
+      // Auto-forward (optional). Keep a short delay so you can see the log.
+      setTimeout(() => { window.location.href = "./index.html"; }, 800);
+    })
+    .catch((e) => {
+      dbg("SMART ready FAILED ❌");
+      dbg(String(e && (e.stack || e.message || e)));
+    });
 </script>
 </body>
 </html>
