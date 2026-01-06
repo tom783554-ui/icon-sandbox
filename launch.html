@@ -5,24 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SupEHR Launch</title>
 
-  <!-- SMART on FHIR JS client -->
   <script src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"></script>
 
   <style>
-    body {
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      padding: 16px;
-    }
-    pre {
-      white-space: pre-wrap;
-      word-break: break-word;
-      background: #f6f8fa;
-      padding: 12px;
-      border-radius: 10px;
-    }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; padding: 16px; }
+    pre { white-space: pre-wrap; word-break: break-word; background:#f6f8fa; padding:12px; border-radius:10px; }
   </style>
 </head>
-
 <body>
   <h3>Launching SupEHR…</h3>
   <pre id="dbg"></pre>
@@ -31,27 +20,23 @@
   const dbgEl = document.getElementById("dbg");
   const dbg = (msg) => dbgEl.textContent += msg + "\n";
 
-  // --- READ SMART LAUNCH PARAMS (EXACT NAMES) ---
   const params = new URLSearchParams(window.location.search);
   const iss = params.get("iss");
   const launch = params.get("launch");
 
-  // --- EPIC APP CONFIG (MUST MATCH EPIC EXACTLY) ---
   const client_id = "922657b3-1886-4eb0-927b-ca645e21d336";
   const redirect_uri = "https://tom783554-ui.github.io/icon-sandbox/callback.html";
 
-  // --- DEBUG VISIBILITY ---
   dbg("iss = " + (iss || "MISSING"));
   dbg("launch = " + (launch ? "PRESENT" : "none"));
   dbg("client_id = " + client_id);
   dbg("redirect_uri = " + redirect_uri);
 
   if (!iss) {
-    dbg("ERROR: missing iss. This page must be launched from Epic SMART.");
+    dbg("ERROR: missing iss (this page must be launched by Epic SMART).");
     throw new Error("Missing iss");
   }
 
-  // --- SANDBOX-SAFE SCOPES ---
   const scope = [
     "launch",
     "openid",
@@ -62,16 +47,18 @@
     "user/*.read"
   ].join(" ");
 
-  // --- START SMART AUTH ---
+  // IMPORTANT: persist auth across reloads/navigation on GitHub Pages
+  const storage = window.localStorage;
+
   FHIR.oauth2.authorize({
-    clientId: client_id,          // library expects camelCase HERE
-    redirectUri: redirect_uri,    // library expects camelCase HERE
-    iss: iss,
-    scope: scope,
+    clientId: client_id,
+    redirectUri: redirect_uri,
+    iss,
+    scope,
     pkceMode: "required",
-    ...(launch ? { launch: launch } : {})
+    storage,
+    ...(launch ? { launch } : {})
   });
 </script>
-
 </body>
 </html>
