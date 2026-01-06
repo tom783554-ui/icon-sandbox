@@ -5,19 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SupEHR Callback</title>
   <script src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"></script>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; padding: 16px; }
+    pre { white-space: pre-wrap; word-break: break-word; background:#fff5f5; border:1px solid #fecaca; padding:12px; border-radius:10px; color:#7f1d1d; }
+  </style>
 </head>
-<body style="font-family: system-ui; padding: 16px;">
-  <div>Completing sign-in…</div>
-  <pre id="err"></pre>
+<body>
+  <h3>Completing sign-in…</h3>
+  <pre id="err" style="display:none"></pre>
 
 <script>
+  const errEl = document.getElementById("err");
+  function showErr(e) {
+    errEl.style.display = "block";
+    errEl.textContent = (e?.stack || e?.message || String(e));
+  }
+
+  // If you open callback.html directly you WILL get "No state parameter found".
+  // It must be reached only via Epic OAuth redirect.
   FHIR.oauth2.ready()
-    .then(() => location.replace("index.html"))
-    .catch((e) => {
-      document.getElementById("err").textContent =
-        (e?.stack || e?.message || String(e));
-    });
+    .then(() => {
+      // IMPORTANT: go to index.html WITHOUT typing anything manually
+      location.replace("index.html");
+    })
+    .catch(showErr);
 </script>
 </body>
 </html>
-
